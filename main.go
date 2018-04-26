@@ -30,5 +30,10 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(abspath)
+	resolvedPath, err := filepath.EvalSymlinks(abspath)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Println(resolvedPath)
 }
